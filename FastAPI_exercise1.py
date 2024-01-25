@@ -29,6 +29,8 @@ with sl.connect('socialnet.db') as conn:
     body TEXT NOT NULL
     )''')
 
+    cursor.execute('DELETE FROM Users')
+    cursor.execute('DELETE FROM Posts')
     cursor.executemany('INSERT INTO Users (id, name, email, gender, status) VALUES (?, ?, ?, ?, ?)', data_users)
     cursor.executemany('INSERT INTO Posts (id, user_id, title, body) VALUES (?, ?, ?, ?)', data_posts)
     conn.commit()

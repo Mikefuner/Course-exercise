@@ -12,7 +12,7 @@ async def users_data():
 
         for i in range(len(users)):
             users[i] = {'id': users[i][0], 'name': users[i][1], 'email': users[i][2], 'gender': users[i][3], 'status': users[i][4]}       
-    return users
+    return users[::-1]
     
 @app.get('/socialnet/users/{user_id}')
 async def user_id_data(user_id: int):
@@ -32,4 +32,4 @@ async def user_posts_data(user_id: int):
 
         for post in posts:
             user_posts.append({'id': post[0], 'user_id': post[1], 'title': post[2], 'body': post[3]})
-    return user_posts
+    return user_posts[::-1]
