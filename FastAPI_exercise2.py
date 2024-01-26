@@ -1,7 +1,12 @@
 from fastapi import FastAPI
+from FastAPI_exercise1 import update_database
 import sqlite3 as sl
 
 app = FastAPI()
+
+@app.get('/')
+async def update_data():
+    update_database()
 
 @app.get('/socialnet/users')
 async def users_data():
